@@ -139,7 +139,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cagencia.cpp" />
+    <ClCompile Include="ccliente.cpp" />
+    <ClCompile Include="cestadia.cpp" />
+    <ClCompile Include="clista.cpp" />
+    <ClCompile Include="cpaquete.cpp" />
+    <ClCompile Include="cpasaje.cpp" />
+    <ClCompile Include="creserva.cpp" />
+    <ClCompile Include="cvuelo.cpp" />
     <ClCompile Include="tp-n2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cagencia.h" />
+    <ClInclude Include="ccliente.h" />
+    <ClInclude Include="cestadia.h" />
+    <ClInclude Include="clista.h" />
+    <ClInclude Include="cpaquete.h" />
+    <ClInclude Include="cpasaje.h" />
+    <ClInclude Include="creserva.h" />
+    <ClInclude Include="cvuelo.h" />
+    <ClInclude Include="EnumFormaDePago.h" />
+    <ClInclude Include="EnumTipoDeAsiento.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
