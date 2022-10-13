@@ -1,5 +1,5 @@
 #include "ccliente.h"
-
+#include <sstream>
 ccliente::ccliente(string _nombre, string _DNI)
 {
 	nombre = _nombre;
@@ -32,9 +32,13 @@ string ccliente::getDNI()
 
 string ccliente::to_string()
 {
-	return string();
+	stringstream ss;
+	ss << "nombre: " << nombre << endl;
+	ss << "DNI: " << DNI << endl;
+	return ss.str();
 }
 
 void ccliente::imprimir()
 {
+	cout << to_string() << endl;
 }

@@ -1,9 +1,15 @@
 #include "creserva.h"
+//#include <sstream>
 
+int creserva::NumeroReserva = 0;
+int creserva::max = 0;
 
-
-creserva::creserva()
+creserva::creserva(string _fechaReserva, EnumFormaDePago _formaPago)
 {
+	NumeroReserva = NumeroReserva + 1;
+	fechaReserva=_fechaReserva;
+	formaPago = _formaPago; 
+
 }
 
 creserva::~creserva()
@@ -72,9 +78,15 @@ int creserva::getmax()
 
 string creserva::to_string()
 {
-	return string();
+	/*stringstream ss;
+	ss << "NumeroReserva: " << NumeroReserva << endl;
+	ss << "fecha de reserva: " << fechaReserva << endl;
+	ss << "forma de pago: " << formaPago << endl;
+	ss << "abono: " << abono << endl;
+	return ss.str();*/
 }
 
 void creserva::imprimir()
 {
+	/*cout << to_string() << endl;*/
 }

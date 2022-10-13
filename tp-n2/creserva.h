@@ -16,7 +16,7 @@ protected:
 	static int max;
 
 public:
-	creserva();
+	creserva(string _fechaReserva, EnumFormaDePago _formaPago);
 	~creserva();
 	virtual float calcularPrecioT()=0;
 	 int getNumeroReserva();

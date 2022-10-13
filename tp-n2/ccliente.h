@@ -4,7 +4,7 @@ using namespace std;
 class ccliente
 {
 private:
-	string nombre;
+	 string nombre;
 	string DNI;
 public:
 	ccliente(string _nombre, string _DNI);
