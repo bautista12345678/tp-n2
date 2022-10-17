@@ -1,25 +1,33 @@
 #pragma once
 #include "creserva.h"
+#include "Fecha.h"
+
 class cestadia:public creserva
 {
 private:
-	string fechaIngreso;
-	string fechaSalida;
-	string precioDia;
+	Fecha *fechaIngreso;
+	Fecha *fechaSalida;
+	float precioDia;
 	string nombreHotel;
 	int numeroHabitaciones;
+		int dias;
 public:
-	cestadia(string _fechaReserva, EnumFormaDePago _formaPago);
+	cestadia(Fecha* _fechaReserva, EnumFormaDePago _formaPago, int _numeroHabitaciones,int _dias);
 	~cestadia();
-	void setfechaIngreso(string _fechaIngreso);
-	string getfechaIngreso();
-	void setfechaSalida(string _fechaSalida);
-	string getfechaSalida();
-	void setprecioDia(string _precioDia);
-	string getprecioDia();
+	void setfechaIngreso(Fecha *_fechaIngreso);
+	Fecha getfechaIngreso();
+	void setfechaSalida(Fecha * _fechaSalida);
+	Fecha getfechaSalida();
+	void setprecioDia(float _precioDia);
+	float getprecioDia();
 	void setnombreHotel(string _nombreHotel);
 	string getnombreHotel();
 	void setnumeroHabitaciones(int _numeroHabitaciones);
 	int getnumeroHabitaciones();
+	void setdias(int _dias);
+	int getdias();
+	string to_string();
+	void imprimir();
+	float calcularPrecioT();
 };
 

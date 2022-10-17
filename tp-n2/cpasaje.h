@@ -10,7 +10,7 @@ private:
 	int cantPasajeros;
 	EnumTipoDeAsiento tipoAsiento;
 public:
-	cpasaje(string _fechaReserva, EnumFormaDePago _formaPago,int _cantPasajeros, EnumTipoDeAsiento _tipoAsiento);
+	cpasaje(Fecha * _fechaReserva, EnumFormaDePago _formaPago,int _cantPasajeros, EnumTipoDeAsiento _tipoAsiento);
 	~cpasaje();
 	clista<cvuelo> getListaVuelos();
 	void setcantPasajeros(int _cantPasajeros);
@@ -19,7 +19,7 @@ public:
 	EnumTipoDeAsiento gettipoAsiento();
 	string to_string();
 	void imprimir();
-
+	float calcularPrecioT();
 
 };
 

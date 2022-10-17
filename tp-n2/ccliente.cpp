@@ -1,9 +1,9 @@
 #include "ccliente.h"
 #include <sstream>
-ccliente::ccliente(string _nombre, string _DNI)
+ccliente::ccliente(/*string _nombre, string _DNI*/)
 {
-	nombre = _nombre;
-	DNI = _DNI;
+	/*nombre = _nombre;
+	DNI = _DNI;*/
 }
 
 ccliente::~ccliente()

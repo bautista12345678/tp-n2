@@ -1,1 +1,189 @@
 #include "cagencia.h"
+#include "cestadia.h"
+#include "cpasaje.h"
+#include "cpaquete.h"
+
+cagencia::cagencia()
+{
+}
+
+cagencia::~cagencia()
+{
+	for (int i = 0; i < listaReservas->getcantidad(); i++) {
+		listaReservas->getLista()[i] = nullptr;
+	}
+	delete listaReservas;
+	for (int j = 0; j < listaClientes->getcantidad(); j++) {
+		listaClientes->getLista()[j] = nullptr;
+	}
+	delete listaClientes;
+	for (int k = 0; k < lista5dias->getcantidad(); k++) {
+		lista5dias->getLista()[k] = nullptr;
+	}
+	delete lista5dias;
+}
+
+clista<creserva> cagencia::getlistaReservas()
+{
+	return *listaReservas;
+}
+
+clista<ccliente> cagencia::getlistaClientes()
+{
+	return *listaClientes;
+}
+
+clista<creserva> cagencia::getlista5dias()
+{
+	return *lista5dias;
+}
+
+void cagencia::generarReserva(creserva *_reserva)
+{
+	cestadia* estadia_aux = dynamic_cast <cestadia*> (_reserva);
+	if (estadia_aux != nullptr) {
+		creserva* reserva = new cestadia(estadia_aux->getfechaReserva(), estadia_aux->getformaPago(), estadia_aux->getnumeroHabitaciones(), estadia_aux->getdias());
+		cout<<"genero un pasaje"<<endl;
+		estadia_aux->calcularPrecioT();
+		cout << "precio total:" << estadia_aux->getprecioT();
+		(*listaReservas) + _reserva;
+	}
+	cpasaje* pasaje_aux = dynamic_cast <cpasaje*> (_reserva);
+	if (pasaje_aux != nullptr) {
+		creserva* reserva = new cpasaje(pasaje_aux->getfechaReserva(), pasaje_aux->getformaPago(), pasaje_aux->getcantPasajeros(), pasaje_aux->gettipoAsiento());
+		cout << "genero una estadia" << endl;
+		pasaje_aux->calcularPrecioT();
+		cout << "precio total:" << pasaje_aux->getprecioT();
+		(*listaReservas) + _reserva;
+	}
+	cpaquete* paquete_aux = dynamic_cast <cpaquete*> (_reserva);
+	if (paquete_aux != nullptr) {
+		//creserva* reserva = new cpaquete(paquete_aux->getfechaReserva(), paquete_aux->getformaPago(), paquete_aux->getpasaje(), paquete_aux->getestadia());
+		cout << "genero un paquete" << endl;
+		paquete_aux->calcularPrecioT();
+		cout << "precio total:" << paquete_aux->getprecioT();
+		(*listaReservas) + _reserva;
+
+	}
+
+}
+
+void cagencia::menor5dias()
+{
+	for (int i = 0; i < listaReservas->getcantidad(); i++)
+	{
+		cestadia* estadia_aux = dynamic_cast <cestadia*> (listaReservas->getLista()[i]);
+		if (estadia_aux != nullptr) {
+
+		int dias;
+    cout << "dia ingreso:" << listaReservas->getLista()[i]->getfechaingreso()->getdia()<< endl;//H
+    
+    cout << "mes 1:" << listaReservas->getLista()[i]->getfechaingreso()->getmes() << endl;//T
+    
+    cout << "dia 2:" << listaReservas->getLista()[i]->getfechaSalida()->getdia() << endl;//D
+    
+    cout << "mes 2:" << listaReservas->getLista()[i]->getfechaSalida()->getmes() << endl;//M
+    
+    dias = (listaReservas->getLista()[i]->getfechaingreso()->getdia() - listaReservas->getLista()[i]->getfechaSalida()->getdia()) 
+		+ (listaReservas->getLista()[i]->getfechaingreso()->getmes() * (30) - listaReservas->getLista()[i]->getfechaSalida()->getmes() * (30));
+    if (dias < 0)
+    {
+        dias = dias * (-1);
+    }
+    cout << "los dias son:" << dias;
+	 if(dias<6)
+	 {(*lista5dias)+(listaReservas->getLista()[i]);}
+		}
+		cpaquete* paquete_aux = dynamic_cast <cpaquete*> (listaReservas->getLista()[i]);
+		if (paquete_aux != nullptr) {
+		
+			int dias;
+			cout << "dia ingreso:" << listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getdia() << endl;//H
+
+			cout << "mes 1:" << listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getmes() << endl;//T
+
+			cout << "dia 2:" << listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getdia() << endl;//D
+
+			cout << "mes 2:" << listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getmes() << endl;//M
+
+			dias = (listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getdia() - listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getdia())
+				+ (listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getmes() * (30) - listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getmes() * (30));
+			if (dias < 0)
+			{
+				dias = dias * (-1);
+			}
+			cout << "los dias son:" << dias;
+			 if(dias<6)
+	         {(*lista5dias)+(listaReservas->getLista()[i]);}
+		}
+	}
+}
+
+void cagencia::clientes()
+{
+ for(int i=0;i<listaReservas->getcantidad();i++)
+ {
+    (*listaClientes)+(listaReservas->getLista()[i]->getcliente());
+ }
+}
+
+void cagencia::gananciasTotales()
+{
+	float acum=0,acum_pas=0,acum_es=0,acum_paq=0;
+	for (int i = 0; i < listaReservas->getcantidad(); i++)
+	{
+		acum = acum + listaReservas->getLista()[i]->getprecioT();
+
+		cestadia* estadia_aux = dynamic_cast <cestadia*> (listaReservas->getLista()[i]);
+		if (estadia_aux != nullptr) {
+			acum_es = acum_es + listaReservas->getLista()[i]->getprecioT();
+		}
+
+		cpasaje* pasaje_aux = dynamic_cast <cpasaje*> (listaReservas->getLista()[i]);
+		if (pasaje_aux != nullptr) {
+			acum_pas = acum_pas + listaReservas->getLista()[i]->getprecioT();
+		}
+
+		cpaquete* paquete_aux = dynamic_cast <cpaquete*> (listaReservas->getLista()[i]);
+		if (paquete_aux != nullptr) {
+			acum_paq = acum_paq + listaReservas->getLista()[i]->getprecioT();
+		}
+	}
+
+	cout << "las ganancias totales son:" << acum << endl;
+	cout << "las ganancias totales de las estadias  son:" << acum_es << endl;
+	cout << "las ganancias totales de los pasajes son:" << acum_pas << endl;
+	cout << "las ganancias totales de los paquetes son:" << acum_paq << endl;
+}
+
+float cagencia::totalAdeudado()
+{
+	float deuda=0;
+	for (int i = 0; i < listaReservas->getcantidad(); i++)
+	{
+
+		if (listaReservas->getLista()[i]->getabono() == false)
+		{
+
+			deuda = deuda + listaReservas->getLista()[i]->getprecioT();
+		}
+
+	}
+	return deuda;
+}
+
+float cagencia::totalRecaudado()
+{
+	float recaudo = 0;
+	for (int i = 0; i < listaReservas->getcantidad(); i++)
+	{
+
+		if (listaReservas->getLista()[i]->getabono() == true)
+		{
+
+			recaudo = recaudo + listaReservas->getLista()[i]->getprecioT();
+		}
+
+	}
+	return recaudo;
+}

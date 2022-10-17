@@ -147,7 +147,8 @@
     <ClCompile Include="cpasaje.cpp" />
     <ClCompile Include="creserva.cpp" />
     <ClCompile Include="cvuelo.cpp" />
-    <ClCompile Include="tp-n2.cpp" />
+    <ClCompile Include="Fecha.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cagencia.h" />
@@ -160,6 +161,11 @@
     <ClInclude Include="cvuelo.h" />
     <ClInclude Include="EnumFormaDePago.h" />
     <ClInclude Include="EnumTipoDeAsiento.h" />
+    <ClInclude Include="Fecha.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tp-n2.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

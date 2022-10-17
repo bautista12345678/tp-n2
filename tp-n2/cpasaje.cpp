@@ -1,6 +1,6 @@
 #include "cpasaje.h"
 #include <sstream>
-cpasaje::cpasaje(string _fechaReserva, EnumFormaDePago _formaPago, int _cantPasajeros,
+cpasaje::cpasaje(Fecha * _fechaReserva, EnumFormaDePago _formaPago, int _cantPasajeros,
 	EnumTipoDeAsiento _tipoAsiento):creserva( _fechaReserva, _formaPago)
 {
 	cantPasajeros = _cantPasajeros;
@@ -44,7 +44,7 @@ string cpasaje::to_string()
 {
 	stringstream ss;
 	ss << "NumeroReserva: " << getNumeroReserva() << endl;
-	ss << "fecha de reserva: " << getfechaReserva() << endl;
+	ss << "fecha de reserva:%d/%d/%d " << fechaReserva->getdia()<< fechaReserva->getmes()<< fechaReserva->getanio()<<endl;
 	ss << "forma de pago: " << getformaPago() << endl;
 	ss << "abono: " << getabono() << endl;
 	ss << "Cantidad de pasajeros: " << cantPasajeros << endl;
@@ -57,8 +57,37 @@ void cpasaje::imprimir()
 	cout << to_string() << endl;
 }
  
-float creserva::calcularPrecioT()
+float cpasaje::calcularPrecioT()
 {
-
-
+	float aux,acum=0;
+	
+	for (int i = 0; i <ListaVuelos->getcantidad();i++)
+	{
+		acum = acum + ListaVuelos->getLista()[i]->getprecio();
+	}
+	aux= acum * cantPasajeros;
+	if (tipoAsiento == 1)
+	{
+		precioT= aux + (aux / 2);
+	}
+	else if (tipoAsiento == 2)
+	{
+		precioT= aux + aux + (aux / 2);
+	}
+	else
+	{
+		 precioT= precioT;
+	}
+	if (formaPago == 0)
+	{
+		precioT = precioT - ((precioT * 5) / 100);
+	}
+	else if (formaPago == 2) {
+		precioT = precioT + ((precioT * 10) / 100);
+	}
+	else
+	{
+		precioT = precioT;
+	}
+	return precioT;
 }

@@ -4,7 +4,7 @@
 int creserva::NumeroReserva = 0;
 int creserva::max = 0;
 
-creserva::creserva(string _fechaReserva, EnumFormaDePago _formaPago)
+creserva::creserva(Fecha* _fechaReserva, EnumFormaDePago _formaPago)
 {
 	NumeroReserva = NumeroReserva + 1;
 	fechaReserva=_fechaReserva;
@@ -21,20 +21,17 @@ int creserva::getNumeroReserva()
 	return NumeroReserva;
 }
 
-void creserva::setfechaReserva(string _fechaReserva)
+void creserva::setfechaReserva(Fecha* _fechaReserva)
 {
 	fechaReserva = _fechaReserva;
 }
 
-string creserva::getfechaReserva()
+Fecha creserva::getfechaReserva()
 {
-	return fechaReserva;
+	return *fechaReserva;
 }
 
-void creserva::setprecioT(float _precioT)
-{
-	precioT = _precioT;
-}
+
 
 float creserva::getprecioT()
 {
@@ -64,6 +61,7 @@ bool creserva::getabono()
 void creserva::setcliente(ccliente _cliente)
 {
 	cliente = _cliente;
+	
 }
 
 ccliente creserva::getcliente()
@@ -73,20 +71,25 @@ ccliente creserva::getcliente()
 
 int creserva::getmax()
 {
+	if (precioT > max)
+	{
+		max = precioT;
+	}
 	return max;
 }
 
-string creserva::to_string()
+/*string creserva::to_string()
 {
 	/*stringstream ss;
 	ss << "NumeroReserva: " << NumeroReserva << endl;
 	ss << "fecha de reserva: " << fechaReserva << endl;
 	ss << "forma de pago: " << formaPago << endl;
 	ss << "abono: " << abono << endl;
-	return ss.str();*/
+	return ss.str();
 }
 
 void creserva::imprimir()
 {
-	/*cout << to_string() << endl;*/
+	/*cout << to_string() << endl;
 }
+*/
