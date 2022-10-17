@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
-#include <ctime>
-#include <windows.h>
+#include "cagencia.h"
+#include "ccliente.h"
+#include "cestadia.h"
 using namespace std;
 int main()
 {
@@ -22,5 +23,8 @@ int main()
         R = R * (-1);
     }
     cout << "los dias son:" << R;*/
+
+
+   // creserva* reserva = new cestadia(12/13/1111, estadia_aux->getformaPago(), estadia_aux->getnumeroHabitaciones(), estadia_aux->getdias());
     return 0;
 }

@@ -27,9 +27,9 @@ void creserva::setfechaReserva(Fecha* _fechaReserva)
 	fechaReserva = _fechaReserva;
 }
 
-Fecha creserva::getfechaReserva()
+Fecha* creserva::getfechaReserva()
 {
-	return *fechaReserva;
+	return fechaReserva;
 }
 
 
@@ -65,9 +65,9 @@ void creserva::setcliente(ccliente *_cliente)
 	
 }
 
-ccliente creserva::getcliente()
+ccliente* creserva::getcliente()
 {
-	return *cliente;
+	return this->cliente;
 }
 
 int creserva::getmax()

@@ -4,17 +4,16 @@
 
 class cagencia
 {
-	
 private:
 	clista<creserva>* listaReservas;
-	clista<ccliente>* listaClientes ;
+	clista<ccliente>* listaClientes;
 	clista<creserva>* lista5dias;
 public:
 	cagencia();
 	~cagencia();
-	clista<creserva> getlistaReservas();
-	clista<ccliente> getlistaClientes();
-	clista<creserva> getlista5dias();
+	clista<creserva> *getlistaReservas();
+	clista<ccliente>* getlistaClientes();
+	clista<creserva>* getlista5dias();
 	void generarReserva(creserva* _reserva);
 	void menor5dias();
 	void clientes();

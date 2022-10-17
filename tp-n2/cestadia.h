@@ -14,9 +14,9 @@ public:
 	cestadia(Fecha* _fechaReserva, EnumFormaDePago _formaPago, int _numeroHabitaciones,int _dias);
 	~cestadia();
 	void setfechaIngreso(Fecha *_fechaIngreso);
-	Fecha getfechaIngreso();
+	Fecha* getfechaIngreso();
 	void setfechaSalida(Fecha * _fechaSalida);
-	Fecha getfechaSalida();
+	Fecha* getfechaSalida();
 	void setprecioDia(float _precioDia);
 	float getprecioDia();
 	void setnombreHotel(string _nombreHotel);

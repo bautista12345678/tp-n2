@@ -24,14 +24,14 @@ public:
 	virtual float calcularPrecioT()=0;
 	 int getNumeroReserva();
 	 void setfechaReserva(Fecha *_fechaReserva);
-	 Fecha getfechaReserva();
+	 Fecha *getfechaReserva();
 	 float getprecioT();
 	 void setformaPago(EnumFormaDePago _formaPago);
 	 EnumFormaDePago getformaPago();
 	 void setabono(bool _abono);
 	 bool getabono();
 	 void setcliente(ccliente *_cliente);
-	 ccliente getcliente();
+	 ccliente *getcliente();
 	 int getmax();
 	 virtual string to_string()=0;
 	 virtual void imprimir()=0;

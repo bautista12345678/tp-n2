@@ -16,9 +16,9 @@ void cestadia::setfechaIngreso(Fecha *_fechaIngreso)
 	fechaIngreso = _fechaIngreso;
 }
 
-Fecha cestadia::getfechaIngreso()
+Fecha* cestadia::getfechaIngreso()
 {
-	return *fechaIngreso;
+	return fechaIngreso;
 }
 
 void cestadia::setfechaSalida(Fecha *_fechaSalida)
@@ -26,9 +26,9 @@ void cestadia::setfechaSalida(Fecha *_fechaSalida)
 	fechaSalida = _fechaSalida;
 }
 
-Fecha cestadia::getfechaSalida()
+Fecha* cestadia::getfechaSalida()
 {
-	return *fechaSalida;
+	return fechaSalida;
 }
 
 void cestadia::setprecioDia(float _precioDia)
