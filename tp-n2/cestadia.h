@@ -1,6 +1,5 @@
 #pragma once
 #include "creserva.h"
-#include "Fecha.h"
 
 class cestadia:public creserva
 {

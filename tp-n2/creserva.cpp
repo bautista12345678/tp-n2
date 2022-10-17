@@ -1,4 +1,5 @@
 #include "creserva.h"
+#include "cagencia.cpp"
 //#include <sstream>
 
 int creserva::NumeroReserva = 0;
@@ -58,7 +59,7 @@ bool creserva::getabono()
 	return abono;
 }
 
-void creserva::setcliente(ccliente _cliente)
+void creserva::setcliente(ccliente *_cliente)
 {
 	cliente = _cliente;
 	
@@ -66,7 +67,7 @@ void creserva::setcliente(ccliente _cliente)
 
 ccliente creserva::getcliente()
 {
-	return cliente;
+	return *cliente;
 }
 
 int creserva::getmax()

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "creserva.h"
 #include "cestadia.h"
 #include "cpasaje.h"
 class cpaquete:public creserva

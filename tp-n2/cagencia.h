@@ -1,16 +1,14 @@
 #pragma once
 #include "clista.h"
 #include "creserva.h"
-#include "creserva.h"
-#include "ccliente.h"
 
 class cagencia
 {
 	
 private:
-	clista<creserva>* listaReservas = nullptr;
-	clista<ccliente>* listaClientes = nullptr;
-	clista<creserva>* lista5dias = nullptr;
+	clista<creserva>* listaReservas;
+	clista<ccliente>* listaClientes ;
+	clista<creserva>* lista5dias;
 public:
 	cagencia();
 	~cagencia();

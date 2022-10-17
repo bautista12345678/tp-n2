@@ -6,7 +6,7 @@ private:
 	int mes;
 	int anio;
 public:
-	Fecha();
+	Fecha(int _dia, int mes, int anio);
 	~Fecha();
 	void setdia(int _dia);
 	void setmes(int _mes);

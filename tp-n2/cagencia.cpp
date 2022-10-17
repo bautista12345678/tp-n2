@@ -42,7 +42,7 @@ void cagencia::generarReserva(creserva *_reserva)
 {
 	cestadia* estadia_aux = dynamic_cast <cestadia*> (_reserva);
 	if (estadia_aux != nullptr) {
-		creserva* reserva = new cestadia(estadia_aux->getfechaReserva(), estadia_aux->getformaPago(), estadia_aux->getnumeroHabitaciones(), estadia_aux->getdias());
+		creserva* reserva = new cestadia(&estadia_aux->getfechaReserva(), estadia_aux->getformaPago(), estadia_aux->getnumeroHabitaciones(), estadia_aux->getdias());
 		cout<<"genero un pasaje"<<endl;
 		estadia_aux->calcularPrecioT();
 		cout << "precio total:" << estadia_aux->getprecioT();
@@ -50,7 +50,7 @@ void cagencia::generarReserva(creserva *_reserva)
 	}
 	cpasaje* pasaje_aux = dynamic_cast <cpasaje*> (_reserva);
 	if (pasaje_aux != nullptr) {
-		creserva* reserva = new cpasaje(pasaje_aux->getfechaReserva(), pasaje_aux->getformaPago(), pasaje_aux->getcantPasajeros(), pasaje_aux->gettipoAsiento());
+		creserva* reserva = new cpasaje(&pasaje_aux->getfechaReserva(), pasaje_aux->getformaPago(), pasaje_aux->getcantPasajeros(), pasaje_aux->gettipoAsiento());
 		cout << "genero una estadia" << endl;
 		pasaje_aux->calcularPrecioT();
 		cout << "precio total:" << pasaje_aux->getprecioT();
@@ -76,16 +76,16 @@ void cagencia::menor5dias()
 		if (estadia_aux != nullptr) {
 
 		int dias;
-    cout << "dia ingreso:" << listaReservas->getLista()[i]->getfechaingreso()->getdia()<< endl;//H
+    cout << "dia ingreso:" << estadia_aux->getfechaIngreso().getdia()<< endl;//H
     
-    cout << "mes 1:" << listaReservas->getLista()[i]->getfechaingreso()->getmes() << endl;//T
+    cout << "mes ingreso:" << estadia_aux->getfechaIngreso().getmes() << endl;//T
     
-    cout << "dia 2:" << listaReservas->getLista()[i]->getfechaSalida()->getdia() << endl;//D
+    cout << "dia salida:" << estadia_aux->getfechaSalida().getdia() << endl;//D
     
-    cout << "mes 2:" << listaReservas->getLista()[i]->getfechaSalida()->getmes() << endl;//M
+    cout << "mes salida:" << estadia_aux->getfechaSalida().getmes() << endl;//M
     
-    dias = (listaReservas->getLista()[i]->getfechaingreso()->getdia() - listaReservas->getLista()[i]->getfechaSalida()->getdia()) 
-		+ (listaReservas->getLista()[i]->getfechaingreso()->getmes() * (30) - listaReservas->getLista()[i]->getfechaSalida()->getmes() * (30));
+    dias = (estadia_aux->getfechaIngreso().getdia() - estadia_aux->getfechaSalida().getdia())
+		+ (estadia_aux->getfechaIngreso().getmes() * (30) - estadia_aux->getfechaSalida().getmes() * (30));
     if (dias < 0)
     {
         dias = dias * (-1);
@@ -98,16 +98,16 @@ void cagencia::menor5dias()
 		if (paquete_aux != nullptr) {
 		
 			int dias;
-			cout << "dia ingreso:" << listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getdia() << endl;//H
+			cout << "dia ingreso:" << paquete_aux->getestadia()->getfechaIngreso().getdia() << endl;//H
 
-			cout << "mes 1:" << listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getmes() << endl;//T
+			cout << "mes 1:" << paquete_aux->getestadia()->getfechaIngreso().getmes() << endl;//T
 
-			cout << "dia 2:" << listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getdia() << endl;//D
+			cout << "dia 2:" << paquete_aux->getestadia()->getfechaSalida().getdia() << endl;//D
 
-			cout << "mes 2:" << listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getmes() << endl;//M
+			cout << "mes 2:" << paquete_aux->getestadia()->getfechaSalida().getmes() << endl;//M
 
-			dias = (listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getdia() - listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getdia())
-				+ (listaReservas->getLista()[i]->getestadia()->getfechaingreso()->getmes() * (30) - listaReservas->getLista()[i]->getestadia()->getfechaSalida()->getmes() * (30));
+			dias = (paquete_aux->getestadia()->getfechaIngreso().getdia() - paquete_aux->getestadia()->getfechaSalida().getdia())
+				+ (paquete_aux->getestadia()->getfechaIngreso().getmes() * (30) - paquete_aux->getestadia()->getfechaSalida().getmes() * (30));
 			if (dias < 0)
 			{
 				dias = dias * (-1);
@@ -123,7 +123,7 @@ void cagencia::clientes()
 {
  for(int i=0;i<listaReservas->getcantidad();i++)
  {
-    (*listaClientes)+(listaReservas->getLista()[i]->getcliente());
+    (*listaClientes)+&(listaReservas->getLista()[i]->getcliente());
  }
 }
 

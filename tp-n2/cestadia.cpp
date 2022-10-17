@@ -4,6 +4,7 @@ cestadia::cestadia(Fecha* _fechaReserva, EnumFormaDePago _formaPago, int _numero
 {
 	numeroHabitaciones = _numeroHabitaciones;
 	dias = _dias;
+
 }
 
 cestadia::~cestadia()
