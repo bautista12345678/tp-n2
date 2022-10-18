@@ -3,8 +3,11 @@
 #include "cpasaje.h"
 #include "cpaquete.h"
 
-cagencia::cagencia()
+cagencia::cagencia(clista<creserva>* _listaReservas, clista<ccliente>* _listaClientes, clista<creserva>* _lista5dias)
 {
+	listaReservas = _listaReservas;
+	listaClientes = _listaClientes;
+	lista5dias = _lista5dias;
 }
 
 cagencia::~cagencia()
@@ -156,6 +159,7 @@ void cagencia::gananciasTotales()
 	cout << "las ganancias totales de los paquetes son:" << acum_paq << endl;
 }
 
+
 float cagencia::totalAdeudado()
 {
 	float deuda=0;
@@ -186,4 +190,37 @@ float cagencia::totalRecaudado()
 
 	}
 	return recaudo;
+}
+
+float cagencia::aplicarDescuento()
+{
+	
+	for (int i = 0; i < listaReservas->getcantidad(); i++)
+	{
+		int cont = 0, acum = 0;
+		for(int k=0;i< listaReservas->getcantidad();k++){
+			
+			if (listaReservas->getLista()[i]->getcliente()->getnombre()== listaReservas->getLista()[k]->getcliente()->getnombre()) {
+				cont++;
+				acum = acum + listaReservas->getLista()[i]->getprecioT();
+		}
+		}
+		if (cont < 3 && listaReservas->getLista()[i]->getprecioT() > 250000)
+		{
+			float aux = (listaReservas->getLista()[i]->getprecioT() * 95) / 100;
+			return aux;
+		}
+		if (cont < 4 && listaReservas->getLista()[i]->getprecioT() > 500000)
+		{
+			float aux = (listaReservas->getLista()[i]->getprecioT() * 90) / 100;
+			return aux;
+		}
+		if (cont < 5 && listaReservas->getLista()[i]->getprecioT() > 750000)
+		{
+			float aux = (listaReservas->getLista()[i]->getprecioT() * 85) / 100;
+			return aux;
+		}
+	}
+	
+	
 }

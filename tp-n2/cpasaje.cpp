@@ -1,10 +1,11 @@
 #include "cpasaje.h"
 #include <sstream>
 cpasaje::cpasaje(Fecha * _fechaReserva, EnumFormaDePago _formaPago, int _cantPasajeros,
-	EnumTipoDeAsiento _tipoAsiento):creserva( _fechaReserva, _formaPago)
+	EnumTipoDeAsiento _tipoAsiento, clista<cvuelo>* _ListaVuelos):creserva( _fechaReserva, _formaPago)
 {
 	cantPasajeros = _cantPasajeros;
 	tipoAsiento = _tipoAsiento;
+	ListaVuelos = _ListaVuelos;
 }
 
 cpasaje::~cpasaje()
@@ -14,6 +15,13 @@ cpasaje::~cpasaje()
 	}
 	delete ListaVuelos;
 }
+
+/*void cpasaje::setlistaVuelos(clista<cvuelo>* _ListaVuelos)
+{
+	ListaVuelos = _ListaVuelos;
+}
+*/
+
 
 clista<cvuelo> cpasaje::getListaVuelos()
 {

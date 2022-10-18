@@ -9,7 +9,7 @@ private:
 	clista<ccliente>* listaClientes;
 	clista<creserva>* lista5dias;
 public:
-	cagencia();
+	cagencia(clista<creserva>* _listaReservas, clista<ccliente>* _listaClientes, clista<creserva>* _lista5dias);
 	~cagencia();
 	clista<creserva> *getlistaReservas();
 	clista<ccliente>* getlistaClientes();
@@ -20,4 +20,5 @@ public:
 	void gananciasTotales();
 	float totalAdeudado();
 	float totalRecaudado();
+	float aplicarDescuento();
 };
